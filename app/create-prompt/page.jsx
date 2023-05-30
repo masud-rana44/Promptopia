@@ -9,7 +9,6 @@ import Form from '@components/Form';
 const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  console.log(session);
 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -17,7 +16,7 @@ const CreatePrompt = () => {
     tag: '',
   });
 
-  const createPrompt = async (e) => {
+  const createPost = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -47,7 +46,7 @@ const CreatePrompt = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={createPrompt}
+      handleSubmit={createPost}
     />
   );
 };
