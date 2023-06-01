@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import Form from '@components/Form';
 
 const EditPrompt = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const searchParams = useSearchParams();
   const promptId = searchParams.get('id');
 
@@ -31,6 +33,9 @@ const EditPrompt = () => {
 
   const updatePrompt = async (e) => {
     e.preventDefault();
+    if (!session?.user)
+      return alert('You must be logged in to update a prompt.');
+
     setSubmitting(true);
 
     if (!promptId) alert('Missing promptId!');

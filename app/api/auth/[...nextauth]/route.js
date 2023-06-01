@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+// import GitHubProvider from 'next-auth/providers/github';
 
 import User from '@models/user';
 import { connectToDB } from '@utils/database';
@@ -10,6 +11,10 @@ const handler = NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    // GitHubProvider({
+    //   clientId: process.env.GITHUB_CLIENT_ID,
+    //   clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    // }),
   ],
 
   async session({ session }) {
@@ -31,7 +36,6 @@ const handler = NextAuth({
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
-
 
         // check if user already exists
         const userExists = await User.findOne({ email: profile.email });

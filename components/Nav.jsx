@@ -48,7 +48,7 @@ const Nav = () => {
 
             <button
               type="button"
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}
               className="outline_btn"
             >
               Sign Out
@@ -113,7 +113,7 @@ const Nav = () => {
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    signOut({ callbackUrl: 'http://localhost:3000/' });
                   }}
                   className="mt-5 w-full black_btn"
                 >

@@ -18,6 +18,9 @@ const CreatePrompt = () => {
 
   const createPost = async (e) => {
     e.preventDefault();
+    if (!session?.user)
+      return alert('You must be logged in to create a prompt.');
+
     setSubmitting(true);
 
     try {
