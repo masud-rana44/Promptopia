@@ -23,7 +23,11 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
-      <Link href="/" className="flex-center gap-2 ">
+      <Link
+        href="/"
+        className="flex-center gap-2 "
+        onClick={() => toggleDropdown && setToggleDropdown(false)}
+      >
         <Image
           src="/assets/images/logo.svg"
           alt="Promptopia Logo"
@@ -44,7 +48,7 @@ const Nav = () => {
 
             <button
               type="button"
-              onClik={() => signOut()}
+              onClick={() => signOut()}
               className="outline_btn"
             >
               Sign Out
