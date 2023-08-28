@@ -4,6 +4,11 @@ import Prompt from '@models/prompt';
 export const POST = async (req) => {
   const { userId, prompt, tag } = await req.json();
 
+  // Validate user input
+  if (!userId || !prompt || !tag) {
+    return new Response('Invalid input data', { status: 400 });
+  }
+
   const tags = tag
     .split(' ')
     .map((t) => (t.startsWith('#') ? t : `#${t}`))
